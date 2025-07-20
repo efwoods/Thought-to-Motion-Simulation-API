@@ -1,0 +1,14 @@
+services:
+  thought-to-motion-simulation-api:
+    container_name: thought-to-motion-simulation-api
+    volumes:
+      - ${STIMULUS_IMAGES_DIR}:${STIMULUS_IMAGES_DIR}
+    image: evdev3/thought-to-motion-simulation-api:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    restart: unless-stopped
+    env_file:
+      - .env
